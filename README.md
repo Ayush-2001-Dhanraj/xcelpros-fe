@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💻 Meal Calorie Frontend
 
-## Getting Started
+This repository contains the frontend client application, a modern, responsive web application designed for tracking and calculating meal calorie and nutrient content. It communicates with the Meal Calorie REST API (provided separately) to handle authentication and fetch food data from the USDA FoodData Central.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technology Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is built using the **T3 Stack** principles for a modern, type-safe, and highly performant frontend experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Category | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Framework** | Next.js (App Router) | React framework for routing, rendering, and server-side logic (middleware). |
+| **Language** | TypeScript | Ensures type safety and improves code quality. |
+| **Styling** | Tailwind CSS | Utility-first CSS framework for rapid UI development and responsiveness. |
+| **UI Components** | Shadcn/ui & Radix-UI | Highly accessible, customizable UI components. |
+| **State Management** | Zustand | Simple, fast, and scalable state management. |
+| **Form Handling** | React Hook Form & Zod | Efficient form management with schema validation. |
+| **Animation** | Framer Motion | Smooth, modern page transitions and component animations. |
+| **HTTP Client** | Axios | Promises-based HTTP client for API interaction. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+* **Authentication Flow:** Complete **Register**, **Login**, and **Protected Routing** implemented using Next.js Middleware and custom authentication hooks (`useAuth.ts`).
+* **Meal Search & Calculation:**
+    * **Debounced Search:** Uses a debounced input to query the backend API efficiently for food items.
+    * **Calorie Details:** Displays comprehensive calorie, macronutrient, and micronutrient information based on user-specified servings.
+* **Persistent State:** Utilizes **Zustand** for global state management of authentication (`authStore.ts`) and food search results/details (`foodStore.ts`).
+* **User Interface:**
+    * **Theme Toggle:** Supports Light/Dark mode using `next-themes`.
+    * **Responsive Design:** Optimized for mobile and desktop viewports.
+* **History Tracking:** A dedicated **History page** displays a reversed list of previously searched and calculated meals using `userStore`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+The application follows the Next.js App Router convention with a clear separation of concerns under the `src/` directory.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Screenshot 2025-10-19 163348](https://github.com/user-attachments/assets/71f064c1-15e1-4161-a5d4-ec336fa15eef)
+![Screenshot 2025-10-19 163335](https://github.com/user-attachments/assets/e72c855c-5f9c-47dd-9f3c-bc187c4d94fe)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
