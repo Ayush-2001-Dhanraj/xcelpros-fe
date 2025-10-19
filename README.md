@@ -3,6 +3,44 @@
 This repository contains the frontend client application, a modern, responsive web application designed for tracking and calculating meal calorie and nutrient content. It communicates with the Meal Calorie REST API (provided separately) to handle authentication and fetch food data from the USDA FoodData Central.
 
 ---
+## App Screenshots
+
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/826d0184-94bd-4816-9a13-4a443cbacdc1" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/0b42c542-d3f4-45b5-85a2-958594697eb8" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/2119ea1b-bb61-4881-a884-c53060642be8" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/06998c55-5a21-4fa9-b462-20ec7f71db8b" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/e3bb3075-2054-442b-89a0-14a1ac63e10c" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/4d701988-f348-4312-aac4-d58cca8a01ad" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/d41733ef-7476-444b-8e27-1fb4f1b7b784" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/271294b3-66f5-4b16-94e4-e0eaaf47db94" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/f37b6f6e-35f7-4c85-8af3-774236d6a774" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/d4147394-6b17-4591-a720-9e15bb5f0810" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/7e5c3a49-baa5-4459-a792-a98cd29045f4" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/21ea4b13-32a8-4515-880e-ba5be72a58ae" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/a3ab0948-63d6-43b2-b8e0-9299609f43b4" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/a92e7395-75b7-48d4-b89a-23a3b693bcc2" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/d6d47e06-4cc9-425c-9f03-53964e46927d" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/7550096a-ccc0-4d80-9011-85e415c410b4" width="400"></td>
+  </tr>
+</table>
+
+
 
 ## Technology Stack
 
