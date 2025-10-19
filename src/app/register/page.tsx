@@ -34,7 +34,7 @@ const registerSchema = z.object({
 });
 
 export default function RegisterPage() {
-  const { user, loading } = useAuth();
+  const { user, setUser, loading } = useAuth();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -49,7 +49,8 @@ export default function RegisterPage() {
   const onSubmit = async (data: z.infer<typeof registerSchema>) => {
     try {
       const res = await authApi.register(data.name, data.email, data.password);
-      toast.success(`Registered as ${data.name}. Please Login.`);
+      toast.success(`Registered as ${data.name}.`);
+      setUser(res.user.name);
       router.push("/login");
     } catch (error: any) {
       toast.error(error.message);

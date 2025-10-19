@@ -1,7 +1,8 @@
 import axios from "axios";
 
+
 export const api = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     withCredentials: true,
 });
 
@@ -15,7 +16,7 @@ api.interceptors.response.use(
     }
 );
 
-/** ---------------- Auth APIs ---------------- */
+// auth APIs
 export const authApi = {
     login: (email: string, password: string) =>
         api.post("/auth/login", { email, password }).then(res => res.data),
@@ -31,8 +32,16 @@ export const authApi = {
 
 };
 
-/** ---------------- User APIs ---------------- */
+// user APIs
 export const userApi = {
     getMe: () =>
         api.get("/user").then(res => res.data)
+};
+
+// food APIs
+export const foodApi = {
+    searchDishes: (query: string) =>
+        api.get("/food/search", { params: { query } }).then((res) => res.data),
+    getDishDetails: (dish_name: string, servings = 1) =>
+        api.post("/food/get-calories", { dish_name, servings }).then((res) => res.data),
 };

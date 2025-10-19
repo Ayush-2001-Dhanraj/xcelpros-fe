@@ -47,7 +47,6 @@ export default function LoginPage() {
   const onSubmit = async (data: z.infer<typeof loginSchema>) => {
     try {
       const res = await authApi.login(data.email, data.password);
-      toast.success(`Hiya`);
       setUser(res.user.name);
       toast.success(`Successfully LoggedIn as ${res.user.name}`);
     } catch (error: any) {

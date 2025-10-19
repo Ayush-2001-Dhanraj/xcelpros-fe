@@ -16,6 +16,9 @@ export function ModeToggle() {
   const { setTheme, theme, systemTheme } = useTheme();
 
   const currentTheme = theme === "system" ? systemTheme : theme;
+  const dropdownBg = currentTheme === "dark" ? "bg-gray-800" : "bg-white";
+  const dropdownText =
+    currentTheme === "dark" ? "text-white" : "text-foreground";
 
   return (
     <DropdownMenu>
@@ -29,7 +32,10 @@ export function ModeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent
+        align="end"
+        className={`${dropdownBg} ${dropdownText} border border-border rounded-md shadow-lg`}
+      >
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>

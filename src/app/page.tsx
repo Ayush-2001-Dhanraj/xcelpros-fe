@@ -1,19 +1,24 @@
+"use client";
+
 import Link from "next/link";
-import { ModeToggle } from "@/components/mode-toggle";
+import { Button } from "@/components/ui/button";
 
 export default function Root() {
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <h1 className="text-2xl font-bold">Welcome to Meal Calorie Counter</h1>
-      <div className="flex gap-4">
-        <Link href="/login" className="text-blue-500 hover:underline">
-          Login
-        </Link>
-        <Link href="/register" className="text-blue-500 hover:underline">
-          Register
+    <div className="flex flex-col items-center justify-center p-6 bg-background">
+      <h1 className="text-4xl font-bold mb-6 text-center">
+        Welcome to Meal Calorie Counter
+      </h1>
+
+      <p className="text-muted-foreground mb-6 text-center">
+        Track calories, manage your meals, and see nutrient breakdowns easily.
+      </p>
+
+      <div className="flex gap-4 mb-6">
+        <Link href="/login" passHref>
+          <Button variant="outline">Lets Go</Button>
         </Link>
       </div>
-      <ModeToggle />
     </div>
   );
 }
