@@ -24,8 +24,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authApi } from "@/lib/api";
-import { useAuth } from "@/hooks/useAuth";
 import { useEffect } from "react";
+import { useAuthStore } from "@/store/authStore";
 
 const loginSchema = z.object({
   email: z.email("Please enter a valid email."),
@@ -33,7 +33,7 @@ const loginSchema = z.object({
 });
 
 export default function LoginPage() {
-  const { user, loading, setUser } = useAuth();
+  const { user, loading, setUser, setLoading } = useAuthStore();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -46,11 +46,14 @@ export default function LoginPage() {
 
   const onSubmit = async (data: z.infer<typeof loginSchema>) => {
     try {
+      setLoading(true);
       const res = await authApi.login(data.email, data.password);
       setUser(res.user.name);
       toast.success(`Successfully LoggedIn as ${res.user.name}`);
     } catch (error: any) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 

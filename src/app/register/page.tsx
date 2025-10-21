@@ -24,8 +24,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authApi } from "@/lib/api";
-import { useAuth } from "@/hooks/useAuth";
 import { useEffect } from "react";
+import { useAuthStore } from "@/store/authStore";
 
 const registerSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -34,7 +34,7 @@ const registerSchema = z.object({
 });
 
 export default function RegisterPage() {
-  const { user, setUser, loading } = useAuth();
+  const { user, setUser, loading, setLoading } = useAuthStore();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -48,12 +48,15 @@ export default function RegisterPage() {
 
   const onSubmit = async (data: z.infer<typeof registerSchema>) => {
     try {
+      setLoading(true);
       const res = await authApi.register(data.name, data.email, data.password);
       toast.success(`Registered as ${data.name}.`);
       setUser(res.user.name);
       router.push("/login");
     } catch (error: any) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 

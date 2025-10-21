@@ -11,10 +11,10 @@ import CustomSpinner from "@/components/ui/CustomSpinner";
 import { Card } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuthStore } from "@/store/authStore";
 
 export default function HomePage() {
-  const { user, loading: userLoading } = useAuth();
+  const { user, loading: userLoading } = useAuthStore();
   const router = useRouter();
   const {
     results,
