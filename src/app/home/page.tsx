@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useFoodStore } from "@/store/foodStore";
 import { debounce } from "@/lib/utils";
-import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import CalorieDetails from "@/components/calorie-details";
@@ -11,12 +10,21 @@ import FoodCard from "@/components/food-card";
 import CustomSpinner from "@/components/ui/CustomSpinner";
 import { Card } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function HomePage() {
-  const { user, loading: userLoading } = useAuthStore();
+  const { user, loading: userLoading } = useAuth();
   const router = useRouter();
-  const { results, loading, selected, searchFoods, clearSelected, reset } =
-    useFoodStore();
+  const {
+    results,
+    loading,
+    selected,
+    searchFoods,
+    clearSelected,
+    reset,
+    fetchDetails,
+  } = useFoodStore();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [servings, setServings] = useState<number>(1);
@@ -30,6 +38,12 @@ export default function HomePage() {
       reset();
     }
   }, [router, user]);
+
+  useEffect(() => {
+    if (selected) {
+      fetchDetails(selected.fdcId, servings);
+    }
+  }, [servings]);
 
   const debouncedSearch = useMemo(
     () => debounce(searchFoods, 400),
@@ -66,17 +80,17 @@ export default function HomePage() {
           onChange={handleChangeSearchTerm}
           placeholder="Search a dish..."
           className="flex-1"
+          disabled={!!selected}
         />
-        {!selected && (
-          <Input
-            type="number"
-            min={1}
-            value={servings}
-            onChange={handleChangeServings}
-            placeholder="1"
-            className="w-20"
-          />
-        )}
+        <Input
+          type="number"
+          min={1}
+          value={servings}
+          onChange={handleChangeServings}
+          placeholder="1"
+          className="w-20"
+          disabled={!!selected && loading}
+        />
       </div>
 
       {!selected ? (
@@ -87,21 +101,23 @@ export default function HomePage() {
             </div>
           )}
           {!loading && results.length > 0 && (
-            <Card className="border rounded-xl shadow-sm  divide-border">
-              <AnimatePresence>
-                {results.map((food) => (
-                  <motion.div
-                    key={food.fdcId}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <FoodCard food={food} servings={servings} />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </Card>
+            <ScrollArea className="h-[60vh] border rounded-xl shadow-sm divide-border">
+              <Card className="border rounded-xl shadow-sm  divide-border">
+                <AnimatePresence>
+                  {results.map((food) => (
+                    <motion.div
+                      key={food.fdcId}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <FoodCard food={food} servings={servings} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </Card>
+            </ScrollArea>
           )}
 
           {!loading && !results.length && searchTerm && (

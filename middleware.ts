@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://xcelpros-be.onrender.com";
 
 
-const protectedRoutes = ["/home"];
+const protectedRoutes = ["/home", "/history"];
 const authPages = ["/login", "/register"];
 
 export async function middleware(req: NextRequest) {
@@ -33,5 +33,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/login", "/register", "/home"],
+    matcher: ["/login", "/register", "/home", "/history"],
 };

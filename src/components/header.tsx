@@ -53,13 +53,15 @@ export default function Header() {
               className={`${dropdownBg} ${dropdownText} border border-border rounded-md shadow-lg`}
               forceMount
             >
-              <DropdownMenuItem>
+              <DropdownMenuItem asChild>
                 <Link href="/home">Home</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem asChild>
                 <Link href="/history">History</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout}>
+                Logout
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         )}

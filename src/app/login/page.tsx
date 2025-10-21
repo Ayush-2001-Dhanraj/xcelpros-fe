@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import * as z from "zod";
@@ -26,6 +25,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authApi } from "@/lib/api";
 import { useAuth } from "@/hooks/useAuth";
+import { useEffect } from "react";
 
 const loginSchema = z.object({
   email: z.email("Please enter a valid email."),
@@ -54,7 +54,7 @@ export default function LoginPage() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!loading && user) {
       router.push("/home");
     }

@@ -7,6 +7,7 @@ export interface FoodItem {
     name: string;
     brand: string;
     fdcId: string;
+    score: number;
 }
 
 interface Nutrient {
@@ -22,6 +23,7 @@ export interface FoodDetails {
     total_calories: number;
     micronutrients: Nutrient[];
     source: string;
+    fdcId: string;
 }
 
 interface FoodState {
@@ -29,7 +31,7 @@ interface FoodState {
     results: FoodItem[];
     selected: FoodDetails | null;
     searchFoods: (query: string) => Promise<void>;
-    fetchDetails: (dish_name: string, servings: number) => Promise<void>;
+    fetchDetails: (fdcId: string, servings: number) => Promise<void>;
     clearSelected: () => void;
     reset: () => void;
 }
@@ -57,10 +59,10 @@ export const useFoodStore = create<FoodState>((set) => ({
             set({ loading: false });
         }
     },
-    fetchDetails: async (dish_name: string, servings: number = 1) => {
+    fetchDetails: async (fdcId: string, servings: number = 1) => {
         set({ loading: true });
         try {
-            const data = await foodApi.getDishDetails(dish_name, servings);
+            const data = await foodApi.getDishDetails(fdcId, servings);
             set({ selected: data });
             userStore.getState().addToHistory(data)
         } catch (error: unknown) {

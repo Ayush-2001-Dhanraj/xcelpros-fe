@@ -42,6 +42,6 @@ export const userApi = {
 export const foodApi = {
     searchDishes: (query: string) =>
         api.get("/food/search", { params: { query } }).then((res) => res.data),
-    getDishDetails: (dish_name: string, servings = 1) =>
-        api.post("/food/get-calories", { dish_name, servings }).then((res) => res.data),
+    getDishDetails: (fdcId: string, servings = 1) =>
+        api.post("/food/get-calories", { fdcId, servings }).then((res) => res.data),
 };

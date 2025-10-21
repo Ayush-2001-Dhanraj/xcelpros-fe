@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import * as z from "zod";
@@ -26,6 +25,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authApi } from "@/lib/api";
 import { useAuth } from "@/hooks/useAuth";
+import { useEffect } from "react";
 
 const registerSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -57,7 +57,7 @@ export default function RegisterPage() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!loading && user) {
       router.push("/home");
     }

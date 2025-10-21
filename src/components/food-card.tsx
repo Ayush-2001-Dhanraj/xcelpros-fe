@@ -11,9 +11,10 @@ interface FoodCard {
 
 const FoodCard = ({ food, servings }: FoodCard) => {
   const { fetchDetails } = useFoodStore();
+
   return (
     <Button
-      onClick={() => fetchDetails(food.name, servings)}
+      onClick={() => fetchDetails(food.fdcId, servings)}
       className="flex w-full items-center justify-between hover:bg-muted/60 transition-colors text-left"
     >
       <div className="flex-1 min-w-0">
