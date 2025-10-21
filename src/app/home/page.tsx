@@ -36,7 +36,7 @@ export default function HomePage() {
   useEffect(() => {
     if (user) {
       reset();
-      clear
+      clearSelected();
     }
   }, [router, user]);
 
