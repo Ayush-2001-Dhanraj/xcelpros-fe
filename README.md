@@ -1,5 +1,8 @@
 # 💻 Meal Calorie Frontend
 
+[Live Link ✈](https://xcelpros-fe-amber.vercel.app/)
+
+
 This repository contains the frontend client application, a modern, responsive web application designed for tracking and calculating meal calorie and nutrient content. It communicates with the Meal Calorie REST API (provided separately) to handle authentication and fetch food data from the USDA FoodData Central.
 
 ---
