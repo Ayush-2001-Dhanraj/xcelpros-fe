@@ -20,8 +20,6 @@ export async function middleware(req: NextRequest) {
 
     const isAuthenticated = verifyRes.ok;
 
-    console.log(isAuthenticated, API_URL)
-
     if (isProtected && !isAuthenticated) {
         url.pathname = "/login";
         return NextResponse.redirect(url);
