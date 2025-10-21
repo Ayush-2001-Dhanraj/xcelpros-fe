@@ -7,6 +7,10 @@ This repository contains the frontend client application, a modern, responsive w
 
 <table>
   <tr>
+    <td><img src="https://github.com/user-attachments/assets/fbea19f8-d658-4885-bf85-a9e4c13efbc1" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/69841b41-acac-49f1-ac20-80a4348b5af8" width="400"></td>
+  </tr>
+  <tr>
     <td><img src="https://github.com/user-attachments/assets/826d0184-94bd-4816-9a13-4a443cbacdc1" width="400"></td>
     <td><img src="https://github.com/user-attachments/assets/0b42c542-d3f4-45b5-85a2-958594697eb8" width="400"></td>
   </tr>
