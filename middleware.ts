@@ -13,9 +13,6 @@ export async function middleware(req: NextRequest) {
     const isProtected = protectedRoutes.some((path) => url.pathname.startsWith(path));
     const isAuthPage = authPages.some((path) => url.pathname.startsWith(path));
 
-    console.log(API_URL)
-
-
     const verifyRes = await fetch(`${API_URL}/auth/verify`, {
         headers: { cookie: req.headers.get("cookie") || "" },
         credentials: "include",
@@ -23,6 +20,7 @@ export async function middleware(req: NextRequest) {
 
     const isAuthenticated = verifyRes.ok;
 
+    console.log(isAuthenticated, API_URL)
 
     if (isProtected && !isAuthenticated) {
         url.pathname = "/login";
